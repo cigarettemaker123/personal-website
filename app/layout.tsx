@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,7 +24,27 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <header className="w-full">
+          <nav className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <Link href="/" className="text-sm font-normal text-white">
+              natalie puha
+            </Link>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white">
+              <Link className="transition-opacity hover:opacity-70" href="/about-me">
+                about me
+              </Link>
+              <Link className="transition-opacity hover:opacity-70" href="/work">
+                work
+              </Link>
+              <Link className="transition-opacity hover:opacity-70" href="/experience">
+                experience
+              </Link>
+            </div>
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
